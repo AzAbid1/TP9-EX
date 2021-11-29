@@ -1,0 +1,36 @@
+<div class="container">
+    <h2 class="text-center">Gestion des livres</h2>
+    <form [formGroup]="LivreForm" (ngSubmit)="onSubmitForm()" class="frmborder">
+        <label> Titre:</label>
+        <input type="text" formControlName="titre" class="form-control">
+        <label> Prix:</label>
+        <input type="text" formControlName="prix" class="form-control">
+        <br>
+        <label><input type="checkbox" formControlName="nouveau"> Nouvelle édition </label>
+        <br><button class="btn btn-dark"> Ajouter</button>
+        <input type="reset" value="Effacer" class="btn btn-secondary">
+    </form>
+    <h4>Liste des livres</h4>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th> Id</th>
+                <th>Titre</th>
+                <th>Prix</th>
+                <th>Nouveau</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let l of leslivres">
+                <th>{{l.id}}</th>
+                <td>{{l.titre}}</td>
+                <td>{{l.prix}}</td>
+                <td>{{l.nouveau}}</td>
+                <td><button class="btn btn-warning" (click)="onModifier(l.id)">Modifier</button></td>
+                <td><button class="btn btn-info" (click)="onSupprimer(l.id)">Supprimer</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
